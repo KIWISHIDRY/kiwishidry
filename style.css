@@ -1,0 +1,272 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: rgb(black, black, black);
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.login-box {
+  background-color: #000000; /* Dark grey background */
+  padding: 30px 20px;
+  width: 350px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  margin: 0 auto 20px;
+  font-family: 'Billabong', cursive;
+  font-size: 48px;
+  text-align: center;
+}
+
+
+.input-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #b1acac;
+  background-color: #121212;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #504f4f;
+  opacity: 1;
+}
+
+.password-container .show-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #0095f6;
+  cursor: pointer;
+}
+
+.login-btn {
+  width: 100%;
+  background-color: #0095f6;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 20px; /* Add spacing below the button */
+}
+
+.login-btn:hover {
+  background-color: #0077e6;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between lines and text */
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #dbdbdb; /* Grey lines */
+  margin-bottom: 5px;
+}
+
+.separator span {
+  font-size: 12px;
+  margin-left: 10px;  /* Add space on the left side of the word OR */
+  margin-right: 10px; /* Add space on the right side of the word OR */
+}
+
+.facebook-login {
+  margin: 10px 0;
+}
+
+.facebook-link {
+  color: #0095f6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forgot-password {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+}
+
+.signup-box {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  padding: 15px;
+  margin-top: 10px;
+  text-align: center;
+  width: 350px;
+  height: 50px;
+  border-radius:none;
+}
+
+.signup-box {
+  background-color: #000000; /* Black background */
+  border: 1px solid #ffffff; /* White border */
+  padding: 20px; /* Balanced padding */
+  margin-top: 10px; /* Spacing above */
+  text-align: center; /* Horizontal centering of text */
+  width: 350px; /* Fixed width */
+  height: auto; /* Remove fixed height for content flexibility */
+  border-radius: 0; /* Square borders */
+  display: flex; /* Flexbox for vertical and horizontal alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  flex-direction: column; /* Stack children vertically */
+}
+
+.signup-box p {
+  margin: 0; /* Remove any default margins from the <p> tag */
+}
+
+.signup-box a {
+  color: #0095f6; /* Blue Instagram link color */
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px; /* Spacing for the link */
+}
+
+
+/* Center the "Get the app" text and images */
+.app-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  margin-top: 20px;
+  text-align: center; /* Ensure text alignment is centered */
+}
+
+.app-section p {
+  font-size: 14px; /* Adjust font size for the "Get the app" text */
+  margin-bottom: 15px; /* Add spacing below the text */
+}
+
+.app-buttons img {
+  width: 90px; /* Smaller width for the app buttons */
+  height: 30px; /* Smaller height for the app buttons */
+  margin: 5px; /* Ensure spacing between the buttons */
+  cursor: pointer; /* Add a pointer cursor for interactivity */
+  object-fit: contain; /* Ensure images scale proportionally */
+}
+
+.app-buttons {
+  display: flex; /* Aligns items in a row */
+  justify-content: center; /* Center images horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 10px; /* Adds space between images */
+}
+
+.app-buttons a {
+  display: inline-block; /* Ensures links behave like inline elements */
+}
+
+.app-buttons img {
+  width: 120px; /* Adjust size of buttons */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
+
+.app-buttons img:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+.app-buttons img {
+  width: 140px;  /* Set the width */
+  height: 50px;  /* Set the height */
+  margin: 1px;
+  cursor: pointer;
+  margin-bottom: 15px;
+justify-content: center;
+  /* Ensure images scale proportionally */
+  object-fit: contain; /* Preserve aspect ratio and fit inside */
+}
+
+
+body, input, button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Import the Billabong font for the Instagram logo */
+@font-face {
+  font-family: 'Billabong';
+  src: url('https://fonts.cdnfonts.com/s/15429/Billabong.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.logo {
+  font-family: 'Billabong', cursive;
+  font-size: 50px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* For inputs and links */
+input, button, a {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .login-box, .signup-box {
+    width: 90%; /* Use more screen space on smaller devices */
+    padding: 15px;
+  }
+
+  .app-buttons img {
+    width: 80px; /* Smaller app button logos */
+  }
+}
